@@ -1,6 +1,6 @@
 # SupportHub
 
-A minimal Django REST setup to kick off authentication for the support ticket system.
+A minimal Django REST setup to kick off authentication and ticket handling for the support ticket system.
 
 ## Setup
 
@@ -24,6 +24,12 @@ A minimal Django REST setup to kick off authentication for the support ticket sy
 ## Auth API
 - `POST /api/auth/login/` – returns a token and user profile for valid credentials.
 - `POST /api/auth/logout/` – revokes the current token.
-- `GET /api/auth/whoami/` – returns the authenticated user's profile.
+- `GET /api/auth/whoami/` – returns the authenticated user's profile (including role from `UserProfile`).
 
-See `supporthub/accounts/tests.py` for example flows.
+## Ticket API (MVP)
+- `POST /api/tickets/` – create a ticket (requester set to the authenticated user).
+- `GET /api/tickets/` – customers see their tickets; agents/admins see all tickets.
+- `GET /api/tickets/{id}/` – retrieve a single ticket.
+- `PATCH /api/tickets/{id}/` – customers may edit `subject`/`description`; agents/admins may update status, assignee, priority, etc.
+
+See `supporthub/accounts/tests.py` and `supporthub/tickets/tests.py` for example flows.

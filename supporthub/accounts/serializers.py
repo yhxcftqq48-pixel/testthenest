@@ -1,12 +1,20 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, get_user_model
 from rest_framework import serializers
+
+from .models import UserProfile
 
 
 class UserSerializer(serializers.ModelSerializer):
+    role = serializers.SerializerMethodField()
+
     class Meta:
-        model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']
+        model = get_user_model()
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'role']
+
+    def get_role(self, obj):
+        if hasattr(obj, 'profile') and obj.profile:
+            return obj.profile.role
+        return UserProfile.Role.CUSTOMER
 
 
 class LoginSerializer(serializers.Serializer):

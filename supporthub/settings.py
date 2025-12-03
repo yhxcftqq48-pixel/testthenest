@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'supporthub.accounts',
+    'supporthub.tickets',
 ]
 
 MIDDLEWARE = [

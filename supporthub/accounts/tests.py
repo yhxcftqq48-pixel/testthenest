@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -6,6 +6,7 @@ from rest_framework.test import APITestCase
 
 class AuthenticationFlowTests(APITestCase):
     def setUp(self):
+        User = get_user_model()
         self.user = User.objects.create_user(
             username='demo',
             email='demo@example.com',
