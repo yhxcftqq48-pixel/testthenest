@@ -119,3 +119,11 @@
   4. Agent-Funktionen: Statuswechsel, interne Kommentare, Queue-Filter.
   5. Anhänge & Benachrichtigung: Upload/Download, Webhook/Email Stub.
   6. Hardening: Permissions, SLA/Due-Handling, Audit/Logging, Security/Rate Limiting.
+
+## 10. Offene Inputs für den Auth-Start
+- **Identitätsquelle:** Gibt es bereits einen IdP (z. B. Azure AD, Keycloak, Okta)? Falls ja: OIDC-Client-Daten (Issuer, Client ID/Secret, Redirect-URIs).
+- **Login-Variante im MVP:** Session-Cookies vs. reine JWT-Auth (ohne Refresh? mit Refresh?).
+- **Rollen-Basisdaten:** Default-Rollen (customer/agent/admin) und ob Provisioning manuell, per Invite oder via SCIM/Sync erfolgen soll.
+- **Passwort-Reset/SSO-Stub:** Soll im MVP ein echtes Reset per E-Mail umgesetzt werden oder reicht ein technischer Stub/Mock?
+- **Branding/UX-Vorgaben:** Logo, Farben, rechtliche Texte (Impressum/Datenschutz) für Login/Logout-Seite.
+- **Security-Policies:** Password-Policy (Länge/Komplexität), Session-Timeout, MFA-Anforderungen, erlaubte Redirect-Domains.
